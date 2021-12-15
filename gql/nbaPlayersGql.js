@@ -19,12 +19,12 @@ const typeDefs = gql`
 
   }
 
-  type Query {
+  #type Query {
     # TODO: 'nbaPlayers' by optional ids query 
 
     # TODO: 'nbaPlayer' by id query 
 
-  }
+  #}
 
 `;
 

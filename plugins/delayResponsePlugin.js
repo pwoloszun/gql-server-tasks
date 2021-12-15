@@ -14,6 +14,10 @@ const delayResponsePlugin = {
         console.log('REQUEST end', { operationName, variables });
       },
 
+      async didEncounterErrors(requestContext) {
+        console.error('### Errors', requestContext.errors);
+      },
+      
       // async responseForOperation(requestContext) {
       //   console.log('responseForOperation');
       // }
