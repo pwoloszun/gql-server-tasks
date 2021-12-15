@@ -17,9 +17,8 @@ const typeDefs = gql`
     description: String
     phone: String
 
-    addressId: String
-
     # TODO: 1-1 Address
+    address: Address
 
     # TODO: 1-n Projects
     
@@ -58,7 +57,10 @@ const resolvers = {
 
   User: {
     // TODO: 1-1 Address
-
+    address: (parent) => {
+      // WARNING: n + 1 problem
+      return addressesRepo.getById(parent.addressId);
+    },
     // TODO: 1-n Projects
 
   },
