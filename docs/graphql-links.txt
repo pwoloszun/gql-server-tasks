@@ -1,0 +1,2 @@
+# graphql cheat sheet
+https://devhints.io/graphql#schema

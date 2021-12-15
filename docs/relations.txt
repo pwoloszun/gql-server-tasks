@@ -1,0 +1,10 @@
+user - has 1 address
+user - has n permissions
+
+user - belongs to n projects
+project - has n users
+
+project - has n tasks
+
+===== later =====
+task - has n users
