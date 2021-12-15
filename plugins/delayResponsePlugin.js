@@ -17,6 +17,10 @@ const delayResponsePlugin = {
       // async responseForOperation(requestContext) {
       //   console.log('responseForOperation');
       // }
+
+      async didEncounterErrors(requestContext) {
+        console.error('### Errors', requestContext.errors);
+      }
     };
   },
 };
