@@ -16,12 +16,12 @@ const typeDefs = gql`
     
   }
 
-  type Query {
+  # type Query {
     # TODO: 'users' query
 
     # TODO: 'user' by id query
 
-  }
+  # }
 
   # TODO: input CreateUserParams 
 
@@ -38,7 +38,7 @@ const resolvers = {
   },
 
   // TTODO: mutations
-  Mutation: {},
+  // Mutation: {},
 
 
   User: {

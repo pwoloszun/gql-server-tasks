@@ -15,12 +15,12 @@ const typeDefs = gql`
 
   }
 
-  type Query {
+  # type Query {
     # TODO: 'projects' by optional ids query 
     
     # TODO: 'project' by id query 
 
-  }
+  # }
 
 `;
 

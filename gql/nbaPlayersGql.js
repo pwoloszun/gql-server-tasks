@@ -19,12 +19,12 @@ const typeDefs = gql`
 
   }
 
-  type Query {
+  # type Query {
     # TODO: 'nbaPlayers' by optional ids query 
 
     # TODO: 'nbaPlayer' by id query 
 
-  }
+  # }
 
 `;
 
@@ -36,10 +36,10 @@ const resolvers = {
 
   },
 
-  NbaPlayer: {
-    // TODO: 1-1 team
+  // NbaPlayer: {
+  //   // TODO: 1-1 team
 
-  },
+  // },
 };
 
 module.exports.typeDefs = typeDefs;
