@@ -8,7 +8,16 @@ const typeDefs = gql`
   type User {
     id: ID!
     
-    # TODO scalar fields
+    # scalar fields
+    firstName: String
+    lastName: String
+    username: String
+    email: String
+    title: String
+    description: String
+    phone: String
+
+    addressId: String
 
     # TODO: 1-1 Address
 
@@ -16,12 +25,14 @@ const typeDefs = gql`
     
   }
 
-  # type Query {
+  type Query {
     # TODO: 'users' query
+    users: [User!]!
 
     # TODO: 'user' by id query
+    user(id: ID!): User
 
-  # }
+  }
 
   # TODO: input CreateUserParams 
 
@@ -32,9 +43,13 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     // TODO: 'users' query
-
+    users: async () => {
+      return usersRepo.getAll();
+    },
     // TODO: 'user' by id query
-
+    user: async (parent, args) => {
+      return usersRepo.getById(args.id);
+    },
   },
 
   // TTODO: mutations
