@@ -4,26 +4,12 @@ const { find, map, reduce, concat, uniq, filter, includes } = require('lodash');
 const { projectUsersRepo, usersRepo } = require('../repositories');
 
 async function batchFunction(projectIds) {
-  const projectUsersLinks = await projectUsersRepo.findAllIn('projectId', projectIds);
+  // TODO: batch find all projectUsersLinks (use: findAllIn(...))
 
-  const userIds2D = map(projectUsersLinks, 'userIds');
-  const userIdsWithDupes = reduce(userIds2D, (memo, userIds) => {
-    return concat(memo, userIds);
-  }, []);
-  const userIds = uniq(userIdsWithDupes);
+  // TODO: batch get all users by IDs
 
-  const users = await usersRepo.getAllByIds(userIds);
-
-  return projectIds.map((projectId) => {
-    const link = find(projectUsersLinks, { projectId });
-    if (link) {
-      return filter(users, (user) => {
-        return includes(link.userIds, user.id);
-      });
-    } else {
-      return [];
-    }
-  });
+  // TODO: return mapped projectIds to matching users
+  return [];
 }
 
 const projectUsersLoader = new DataLoader(batchFunction);
