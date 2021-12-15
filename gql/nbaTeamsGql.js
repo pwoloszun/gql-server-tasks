@@ -18,6 +18,7 @@ const typeDefs = gql`
 
   type Query {
     nbaTeams: [NbaTeam!]!
+    
     nbaTeam(id: ID!): NbaTeam
   }
 
@@ -25,9 +26,10 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    nbaTeams: (parent, args) => {
+    nbaTeams: async (parent, args) => {
       // console.log(`Q: nbaTeams`, parent, args);
-      return nbaTeamsRepo.getAll();
+      const entites = await nbaTeamsRepo.getAll();
+      return entites;
     },
 
     nbaTeam: (parent, args) => {
