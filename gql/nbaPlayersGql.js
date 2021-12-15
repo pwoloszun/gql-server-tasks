@@ -44,7 +44,9 @@ const resolvers = {
     // TODO: 1-1 team
     team: (parent) => {
       // IMPORTANT: n + 1 queries problem!!
-      return nbaTeamsRepo.getById(parent.team_id);
+      // return nbaTeamsRepo.getById(parent.team_id);
+
+      return teamsLoader.load(parent.team_id);
     }
   },
 };
