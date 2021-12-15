@@ -13,6 +13,7 @@ const typeDefs = gql`
     name: String
 
     # TODO: 1-n players
+    players: [NbaPlayer!]!
 
   }
 
@@ -40,7 +41,10 @@ const resolvers = {
 
   NbaTeam: {
     // TODO: 1-n players
-
+    players: (parent, args) => {
+      // console.log('par', parent);
+      return nbaPlayersRepo.findAll({ team_id: parent.id });
+    },
   },
 
 };
