@@ -15,41 +15,30 @@ const typeDefs = gql`
     height_inches: Int
     weight_pounds: Int
 
-    team: NbaTeam
+    # TODO: 1-1 team
+
   }
 
   type Query {
-    nbaPlayers(ids: [ID!]): [NbaPlayer!]!
-    nbaPlayer(id: ID!): NbaPlayer
+    # TODO: 'nbaPlayers' by optional ids query 
+
+    # TODO: 'nbaPlayer' by id query 
+
   }
 
 `;
 
 const resolvers = {
   Query: {
-    nbaPlayers: (parent, args) => {
-      // console.log(`Q: nbaPlayers`, parent, args);
-      const { ids = [] } = args;
-      if (ids.length > 0) {
-        return nbaPlayersRepo.getAllByIds(ids);
-      } else {
-        return nbaPlayersRepo.getAll();
-      }
-    },
+    // TODO: 'nbaPlayers' by optional ids query 
 
-    nbaPlayer: (parent, args) => {
-      // console.log(`Q: nbaPlayer`, parent, args);
-      return nbaPlayersRepo.getById(parent.id);
-    },
+    // TODO: 'nbaPlayer' by id query 
 
   },
 
   NbaPlayer: {
-    team: (parent, args) => {
-      // console.log('E: NbaPlayer.team', parent, args);
-      // return nbaTeamsRepo.getById(parent.team_id); // HERE: graphql n + 1 problem
-      return teamsLoader.load(parent.team_id); // FIX
-    }
+    // TODO: 1-1 team
+
   },
 };
 

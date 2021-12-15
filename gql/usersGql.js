@@ -7,71 +7,44 @@ const typeDefs = gql`
 
   type User {
     id: ID!
-    firstName: String!
-    lastName: String!
-    username: String!
-    email: String!
-    title: String
-    description: String
-    phone: String
+    
+    # TODO scalar fields
 
-    address: Address
-    projects: [Project!]!
+    # TODO: 1-1 Address
+
+    # TODO: 1-n Projects
+    
   }
 
   type Query {
-    users: [User!]!
-    user(id: ID!): User
+    # TODO: 'users' query
+
+    # TODO: 'user' by id query
+
   }
 
-  input CreateUserParams {
-    firstName: String!
-    lastName: String!
-    emailDomain: String!
-  }
+  # TODO: input CreateUserParams 
 
-  type Mutation {
-    createUser(params: CreateUserParams!): User!
-  },
+  # TODO: mutation createUser(params: CreateUserParams!): User!
 
 `;
 
 const resolvers = {
   Query: {
-    users: () => {
-      return usersRepo.getAll();
-    },
+    // TODO: 'users' query
 
-    user: (parent, args, context, info) => {
-      return usersRepo.getById(args.id);
-    },
+    // TODO: 'user' by id query
+
   },
 
-  Mutation: {
-    createUser: (parent, args) => {
-      const { firstName, lastName, emailDomain } = args.params;
-      const username = `${firstName[0].toLowerCase()}.${lastName.toLowerCase()}`;
-      const email = `${username}@${emailDomain}`;
-      const entityParams = { firstName, lastName, username, email };
-      return usersRepo.createEntity(entityParams);
-    },
-  },
+  // TTODO: mutations
+  Mutation: {},
+
 
   User: {
-    address: (parent, args) => {
-      if (parent.addressId) {
-        // return addressesRepo.getById(parent.addressId); // n + 1 problem
-        return addressesLoader.load(parent.addressId); // FIX
-      } else {
-        return null;
-      }
-    },
+    // TODO: 1-1 Address
 
-    projects: async (parent, args) => {
-      const projectUsersLinks = await projectUsersRepo.findAll({ userIds: [parent.id] });
-      const projectIds = map(projectUsersLinks, 'projectId');
-      return projectsRepo.getAllByIds(projectIds);
-    },
+    // TODO: 1-n Projects
 
   },
 

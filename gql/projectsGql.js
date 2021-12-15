@@ -11,43 +11,30 @@ const typeDefs = gql`
     description: String!
     imageUrl: String!
 
-    users: [User!]!
+    # TODO: 1-n Users
+
   }
 
   type Query {
-    projects(ids: [ID!]): [Project!]!
-    project(id: ID!): Project
+    # TODO: 'projects' by optional ids query 
+    
+    # TODO: 'project' by id query 
+
   }
 
 `;
 
 const resolvers = {
   Query: {
-    projects: async (parent, args) => {
-      const { ids = [] } = args;
-      if (ids.length > 0) {
-        return projectsRepo.getAllByIds(ids);
-      } else {
-        return projectsRepo.getAll();
-      }
-    },
+    // TODO: 'projects' by optional ids query 
 
-    project: (parent, args) => {
-      return projectsRepo.getById(args.id);
-    },
+    // TODO: 'project' by id query 
 
   },
 
   Project: {
-    users: async (parent, args) => {
-      // const projectUsersLink = await projectUsersRepo.find({ projectId: parent.id });
-      // if (projectUsersLink) {
-      //   return usersRepo.getAllByIds(projectUsersLink.userIds);
-      // } else {
-      //   return [];
-      // }
-      return projectUsersLinkLoader.load(parent.id); // FIX: n + 1
-    },
+    // TODO: 1-n Users
+
   },
 
 };

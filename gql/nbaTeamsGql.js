@@ -12,7 +12,8 @@ const typeDefs = gql`
     full_name: String
     name: String
 
-    players: [NbaPlayer!]!
+    # TODO: 1-n players
+
   }
 
   type Query {
@@ -36,10 +37,8 @@ const resolvers = {
   },
 
   NbaTeam: {
-    players: (parent, args) => {
-      // console.log('E: NbaTeam.players', parent, args);
-      return nbaPlayersRepo.findAll({ team_id: parent.id });
-    }
+    // TODO: 1-n players
+
   },
 
 };
